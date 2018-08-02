@@ -1,5 +1,6 @@
 import datetime
 import logging
+from decimal import Decimal
 
 # Setup for logging
 logging.basicConfig(
@@ -58,14 +59,14 @@ class Loan:
         return ans
 
     @staticmethod
-    def isAmountValid(amount):
-        amountStr = str(amount)
+    def isAmountValid(amountStr):
         ans = False
-        if any(char not in '0123456789.' for char in amountStr):
+        try:
+            amountDecimal = Decimal(amountStr)
+            ans = True
+        except:
             errorMsg = 'Amounts should only contain digits 0-9 and a decimal point: ' + amountStr
             logging.error(errorMsg)
-        else:
-            ans = True
         return ans
 
     @staticmethod

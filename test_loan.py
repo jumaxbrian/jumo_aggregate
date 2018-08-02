@@ -92,7 +92,7 @@ class TestLoan(unittest.TestCase):
         self.assertFalse(Loan.isDateValid('12-Mak-2016'))
 
     def test_if_amount_is_valid(self):
-        self.assertTrue(Loan.isAmountValid(4000))
+        self.assertTrue(Loan.isAmountValid('4000'))
         self.assertFalse(Loan.isAmountValid('45i'))
 
 
