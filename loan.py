@@ -53,7 +53,8 @@ class Loan:
             Loan.convertStringToDate(date_string)
             ans = True
         except:
-            pass
+            errorMsg = 'Date string not a valid date: ' + date_string
+            logging.error(errorMsg)
         return ans
 
     @staticmethod
