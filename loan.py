@@ -14,26 +14,29 @@ class Loan:
     Loan represents a single loan transaction i.e. line in Loans.csv
     '''
 
-    def __init__(self, msisdn, network, loan_date, product, amount):
+    def __init__(self, msisdn, network, month, product, amount):
         self.msisdn = msisdn
         self.network = network
-        self.loan_date = Loan.convertStringToDate(loan_date)
         self.product = product
-        self.amount = amount
+        if(self.isMonthValid(month)):
+            self.month = month
+        if(self.isAmountValid(amount)):
+            self.amount = Decimal(amount)
 
     def display(self):
         return(
-            '{},{},{},{}'
+            '{},{},{},{}{}'
             .format(
                 self.network,
                 self.product,
                 self.getMonth(),
-                self.amount
+                self.amount,
+                "\n"
             )
         )
 
     def getMonth(self):
-        return self.loan_date.strftime('%b')
+        return self.month
 
     def getNetwork(self):
         return self.network
@@ -48,6 +51,30 @@ class Loan:
         self.amount += amount
 
     @staticmethod
+    def isMonthValid(month):
+        ans = False
+        months = [
+            'Jan',
+            'Feb',
+            'Mar',
+            'Apr',
+            'May',
+            'Jun',
+            'Jul',
+            'Aug',
+            'Sep',
+            'Oct',
+            'Nov',
+            'Dec'
+        ]
+        if(month in months):
+            ans = True
+        else:
+            errorMsg = 'Given month is invalid: ' + month
+            logging.error(errorMsg)
+        return ans
+
+    @staticmethod
     def isDateValid(date_string):
         ans = False
         try:
@@ -57,6 +84,10 @@ class Loan:
             errorMsg = 'Date string not a valid date: ' + date_string
             logging.error(errorMsg)
         return ans
+
+    @staticmethod
+    def extractMonthFromDate(date_string):
+        return Loan.convertStringToDate(date_string).strftime('%b')
 
     @staticmethod
     def isAmountValid(amountStr):

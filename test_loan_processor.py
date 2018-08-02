@@ -10,7 +10,7 @@ class TestLoan(unittest.TestCase):
         tempLoan = Loan(
             1000000,
             'Network 1',
-            '12-Mar-2016',
+            'Mar',
             'Loan Product 1',
             1000.50,
         )
@@ -18,7 +18,7 @@ class TestLoan(unittest.TestCase):
         tempLoan = Loan(
             1000000,
             'Network 1',
-            '12-Mar-2016',
+            'Mar',
             'Loan Product 1',
             1000.50,
         )
@@ -26,7 +26,7 @@ class TestLoan(unittest.TestCase):
         tempLoanWithDifferentNetwork = Loan(
             1000000,
             'Network 2',
-            '12-Mar-2016',
+            'Mar',
             'Loan Product 1',
             1000.50,
         )
@@ -36,7 +36,7 @@ class TestLoan(unittest.TestCase):
         tempLoanWithDifferentProduct = Loan(
             1000000,
             'Network 1',
-            '12-Mar-2016',
+            'Mar',
             'Loan Product 2',
             1000.50,
         )
@@ -46,7 +46,7 @@ class TestLoan(unittest.TestCase):
         tempLoanWithDifferentMonth = Loan(
             1000000,
             'Network 1',
-            '12-Apr-2016',
+            'Apr',
             'Loan Product 1',
             1000.50,
         )
@@ -58,7 +58,7 @@ class TestLoan(unittest.TestCase):
         tempLoan = Loan(
             1000000,
             'Network 1',
-            '12-Mar-2016',
+            'Mar',
             'Loan Product 1',
             1000.50,
         )
@@ -66,7 +66,7 @@ class TestLoan(unittest.TestCase):
         newLoan = Loan(
             1000000,
             'Network 1',
-            '12-Mar-2017',
+            'Mar',
             'Loan Product 1',
             2000.50,
         )
@@ -77,7 +77,7 @@ class TestLoan(unittest.TestCase):
         tempLoan = Loan(
             1000000,
             'Network 1',
-            '12-Mar-2016',
+            'Mar',
             'Loan Product 1',
             1000.50,
         )
@@ -85,7 +85,7 @@ class TestLoan(unittest.TestCase):
         newLoan = Loan(
             1000001,
             'Network 1',
-            '12-Mar-2017',
+            'Mar',
             'Loan Product 1',
             2000.50,
         )
@@ -94,7 +94,7 @@ class TestLoan(unittest.TestCase):
         newLoan = Loan(
             1000002,
             'Network 3',
-            '12-Mar-2017',
+            'Mar',
             'Loan Product 1',
             2000.50,
         )

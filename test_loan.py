@@ -39,7 +39,7 @@ class TestLoan(unittest.TestCase):
         tempLoan = Loan(
             1000000,
             'Network 1',
-            '12-Mar-2016',
+            'Mar',
             'Loan Product 1',
             1000.50
         )
@@ -49,7 +49,7 @@ class TestLoan(unittest.TestCase):
         tempLoan = Loan(
             1000000,
             'Network 1',
-            '12-Mar-2016',
+            'Mar',
             'Loan Product 1',
             1000.50
         )
@@ -60,7 +60,7 @@ class TestLoan(unittest.TestCase):
         tempLoan = Loan(
             1000000,
             'Network 1',
-            '12-Mar-2016',
+            'Mar',
             'Loan Product 1',
             1000.50
         )
@@ -72,12 +72,8 @@ class TestLoan(unittest.TestCase):
     def test_convert_wrong_string_to_date(self):
         self.assertRaises(
             ValueError,
-            Loan,
-            1000000,
-            'Network 1',
+            Loan.convertStringToDate,
             '12-Mak-2016',
-            'Loan Product 1',
-            1000.50
         )
 
     def tests_convert_right_string_to_date(self):
@@ -94,6 +90,13 @@ class TestLoan(unittest.TestCase):
     def test_if_amount_is_valid(self):
         self.assertTrue(Loan.isAmountValid('4000'))
         self.assertFalse(Loan.isAmountValid('45i'))
+
+    def test_extract_month(self):
+        self.assertEqual(Loan.extractMonthFromDate('12-Mar-2016'), 'Mar')
+
+    def test_is_month_valid(self):
+        self.assertTrue(Loan.isMonthValid('Mar'))
+        self.assertFalse(Loan.isMonthValid('may'))
 
 
 if __name__ == "__main__":
