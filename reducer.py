@@ -8,9 +8,9 @@ loanProcessor = None
 
 
 def processInput(line):
-    network, product, month, amount = line.split(',')
+    network, product, month_year, amount = line.split(',')
     global loanProcessor
-    newLoan = Loan('', network, month, product, amount)
+    newLoan = Loan('', network, month_year, product, amount)
     if loanProcessor is not None:
         loanProcessor.processNewLoan(newLoan, reducer=True)
     else:

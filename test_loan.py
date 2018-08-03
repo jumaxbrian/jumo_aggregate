@@ -36,15 +36,15 @@ class TestLoan(unittest.TestCase):
         )
         self.assertEqual(tempLoan.getProduct(), 'Loan Product 1')
 
-    def test_get_month(self):
+    def test_get_month_year(self):
         tempLoan = Loan(
             1000000,
             'Network 1',
-            'Mar',
+            'Mar-2016',
             'Loan Product 1',
             1000.50
         )
-        self.assertEqual(tempLoan.getMonth(), 'Mar')
+        self.assertEqual(tempLoan.getMonthYear(), 'Mar-2016')
 
     def test_update_amount(self):
         tempLoan = Loan(
@@ -95,9 +95,11 @@ class TestLoan(unittest.TestCase):
     def test_extract_month(self):
         self.assertEqual(Loan.extractMonthFromDate('12-Mar-2016'), 'Mar')
 
-    def test_is_month_valid(self):
-        self.assertTrue(Loan.isMonthValid('Mar'))
-        self.assertFalse(Loan.isMonthValid('may'))
+    def test_extract_month_year(self):
+        self.assertEqual(
+            Loan.extractMonthYearFromDate('12-Mar-2016'),
+            'Mar-2016'
+        )
 
 
 if __name__ == "__main__":

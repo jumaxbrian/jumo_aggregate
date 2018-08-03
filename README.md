@@ -8,7 +8,7 @@
 1. ### Assumptions
     1. The MSISDNs are unique and thus no duplicates exist in the Loans.csv file
     1. Each of the entries contains exactly 5 fields and that the program doesn't necessarily need to provide the entreis that do not meet these requirements. It only selects the ones that meet those requirements and then processes them.
-    1. The timeseries aspect of the data was not important, therefore, the grouping only considered the months to determine which months in general work well for your organization. For instance, 16-Mar-2016 and 16-Mar-2017 will be aggregated as long as their network and product are the same.
+    1. The timeseries aspect of the data was important, therefore, the grouping considered the months as month-year. For instance, 16-Mar-2016 and 16-Mar-2017 will not be aggregated because their months will be considered as Mar-2016 and Mar-2017 respectively.
     1. Program will run on a unix-like environment.
 
 1. ### Performance and Scaling considerations

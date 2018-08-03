@@ -14,12 +14,11 @@ class Loan:
     Loan represents a single loan transaction i.e. line in Loans.csv
     '''
 
-    def __init__(self, msisdn, network, month, product, amount):
-        self.msisdn = msisdn
+    def __init__(self, msisd, network, month_year, product, amount):
+        self.msisd = msisd
         self.network = network
         self.product = product
-        if(self.isMonthValid(month)):
-            self.month = month
+        self.month_year = month_year  # rep month-year
         if(self.isAmountValid(amount)):
             self.amount = Decimal(amount)
 
@@ -27,19 +26,19 @@ class Loan:
         if(reducer):
             self.network = repr(self.network.title())
             self.product = repr(self.product.title())
-            self.month = repr(self.month.title())
+            self.month_year = repr(self.month_year.title())
         return(
             '{},{},{},{}'
             .format(
                 self.network,
                 self.product,
-                self.month,
+                self.month_year,
                 self.amount
             )
         )
 
-    def getMonth(self):
-        return self.month
+    def getMonthYear(self):
+        return self.month_year
 
     def getNetwork(self):
         return self.network
@@ -52,30 +51,6 @@ class Loan:
 
     def updateAmount(self, amount):
         self.amount += amount
-
-    @staticmethod
-    def isMonthValid(month):
-        ans = False
-        months = [
-            'Jan',
-            'Feb',
-            'Mar',
-            'Apr',
-            'May',
-            'Jun',
-            'Jul',
-            'Aug',
-            'Sep',
-            'Oct',
-            'Nov',
-            'Dec'
-        ]
-        if(month in months):
-            ans = True
-        else:
-            errorMsg = 'Given month is invalid: ' + month
-            logging.error(errorMsg)
-        return ans
 
     @staticmethod
     def isDateValid(date_string):
@@ -91,6 +66,10 @@ class Loan:
     @staticmethod
     def extractMonthFromDate(date_string):
         return Loan.convertStringToDate(date_string).strftime('%b')
+
+    @staticmethod
+    def extractMonthYearFromDate(date_string):
+        return Loan.convertStringToDate(date_string).strftime('%b-%Y')
 
     @staticmethod
     def isAmountValid(amountStr):

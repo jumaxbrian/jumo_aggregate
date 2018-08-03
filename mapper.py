@@ -12,8 +12,8 @@ def processInput(line):
     product = product.strip("'").strip().lower()
     amount = amount.strip("'")
     if(Loan.isAmountValid(amount) and Loan.isDateValid(loan_date)):
-        month = Loan.extractMonthFromDate(loan_date)
-        tempLoan = Loan(msisdn, network, month, product, amount)
+        month_year = Loan.extractMonthYearFromDate(loan_date)
+        tempLoan = Loan(msisdn, network, month_year, product, amount)
         sys.stdout.write(tempLoan.display() + '\n')
 
 

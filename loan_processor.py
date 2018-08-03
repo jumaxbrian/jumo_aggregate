@@ -12,7 +12,7 @@ class LoanProcessor:
         if(
             self.currentAggregate.getNetwork() == newLoan.getNetwork()
             and self.currentAggregate.getProduct() == newLoan.getProduct()
-            and self.currentAggregate.getMonth() == newLoan.getMonth()
+            and self.currentAggregate.getMonthYear() == newLoan.getMonthYear()
         ):
             ans = True
         return ans
