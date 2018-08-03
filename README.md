@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/jumaxbrian/jumo_aggregate.svg?style=svg)](https://circleci.com/gh/jumaxbrian/jumo_aggregate)
+
 # Accounting Aggreagate
 
 1. ### Project
