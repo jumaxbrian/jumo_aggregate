@@ -5,6 +5,7 @@ class LoanProcessor:
 
     def __init__(self, newLoan):
         self.currentAggregate = newLoan
+        self.counter = 1
 
     def canBeAggregated(self, newLoan):
         ans = False
@@ -18,6 +19,7 @@ class LoanProcessor:
 
     def aggregate(self, newLoan):
         self.currentAggregate.updateAmount(newLoan.getAmount())
+        self.counter += 1
 
     def getAggregateAmount(self):
         return self.currentAggregate.getAmount()
@@ -26,8 +28,19 @@ class LoanProcessor:
         if(self.canBeAggregated(newLoan)):
             self.aggregate(newLoan)
         else:
-            self.displayCurrentAggregate(reducer)
-            self.currentAggregate = newLoan
+            sys.stdout.write(self.displayCurrentAggregate(reducer) + '\n')
+            self.updateInternalsWithNewLoanDetails(newLoan)
+            # self.currentAggregate = newLoan
+
+    def updateInternalsWithNewLoanDetails(self, newLoan):
+        self.currentAggregate = newLoan
+        self.counter = 1
 
     def displayCurrentAggregate(self, reducer=False):
-        sys.stdout.write(self.currentAggregate.display(reducer) + '\n')
+        return(
+            '{},{}'
+            .format(
+                self.currentAggregate.display(reducer),
+                self.counter,
+            )
+        )

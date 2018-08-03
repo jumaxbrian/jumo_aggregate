@@ -20,4 +20,5 @@ def processInput(line):
 if __name__ == "__main__":
     for line in sys.stdin:
         processInput(line)
-    loanProcessor.displayCurrentAggregate(reducer=True)
+    output = loanProcessor.displayCurrentAggregate(reducer=True) + '\n'
+    sys.stdout.write(output)
