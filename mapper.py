@@ -14,7 +14,7 @@ def processInput(line):
     if(Loan.isAmountValid(amount) and Loan.isDateValid(loan_date)):
         month = Loan.extractMonthFromDate(loan_date)
         tempLoan = Loan(msisdn, network, month, product, amount)
-        sys.stdout.write(tempLoan.display())
+        sys.stdout.write(tempLoan.display() + '\n')
 
 
 if __name__ == "__main__":

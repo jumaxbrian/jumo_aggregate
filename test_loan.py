@@ -1,5 +1,6 @@
 import unittest
 import datetime
+from decimal import Decimal
 
 from loan import Loan
 
@@ -9,7 +10,7 @@ class TestLoan(unittest.TestCase):
         tempLoan = Loan(
             1000000,
             'Network 1',
-            '12-Mar-2016',
+            'Mar',
             'Loan Product 1',
             1000.50
         )
@@ -19,7 +20,7 @@ class TestLoan(unittest.TestCase):
         tempLoan = Loan(
             1000000,
             'Network 1',
-            '12-Mar-2016',
+            'Mar',
             'Loan Product 1',
             1000.50
         )
@@ -29,7 +30,7 @@ class TestLoan(unittest.TestCase):
         tempLoan = Loan(
             1000000,
             'Network 1',
-            '12-Mar-2016',
+            'Mar',
             'Loan Product 1',
             1000.50
         )
@@ -53,7 +54,7 @@ class TestLoan(unittest.TestCase):
             'Loan Product 1',
             1000.50
         )
-        tempLoan.updateAmount(2000.50)
+        tempLoan.updateAmount(Decimal(2000.50))
         self.assertEqual(tempLoan.getAmount(), 3001)
 
     def test_display(self):

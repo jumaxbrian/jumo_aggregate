@@ -1,3 +1,6 @@
+import sys
+
+
 class LoanProcessor:
 
     def __init__(self, newLoan):
@@ -19,9 +22,12 @@ class LoanProcessor:
     def getAggregateAmount(self):
         return self.currentAggregate.getAmount()
 
-    def processNewLoan(self, newLoan):
+    def processNewLoan(self, newLoan, reducer=False):
         if(self.canBeAggregated(newLoan)):
             self.aggregate(newLoan)
         else:
-            print(self.currentAggregate.display())
+            self.displayCurrentAggregate(reducer)
             self.currentAggregate = newLoan
+
+    def displayCurrentAggregate(self, reducer=False):
+        sys.stdout.write(self.currentAggregate.display(reducer) + '\n')

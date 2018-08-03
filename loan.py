@@ -23,15 +23,18 @@ class Loan:
         if(self.isAmountValid(amount)):
             self.amount = Decimal(amount)
 
-    def display(self):
+    def display(self, reducer=False):
+        if(reducer):
+            self.network = repr(self.network.title())
+            self.product = repr(self.product.title())
+            self.month = repr(self.month.title())
         return(
-            '{},{},{},{}{}'
+            '{},{},{},{}'
             .format(
                 self.network,
                 self.product,
-                self.getMonth(),
-                self.amount,
-                "\n"
+                self.month,
+                self.amount
             )
         )
 
